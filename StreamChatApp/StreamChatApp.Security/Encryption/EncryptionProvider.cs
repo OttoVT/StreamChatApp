@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StreamChatApp.Security.Encryption
 {
-    public class EncryptionProvider
+    public class AssymetricEncryptionProvider
     {
         private int keySize;
         private RSAParameters rsaParameters;
@@ -17,7 +17,7 @@ namespace StreamChatApp.Security.Encryption
         /// Encryption Provider for assymetric encryption
         /// </summary>
         /// <param name="keySize">Key size in bits</param>
-        public EncryptionProvider(int keySize)
+        public AssymetricEncryptionProvider(int keySize)
         {
             if (keySize < 64)
                 throw new ArgumentException("Key should not be less than 64 bit, so f*ck you");
@@ -39,7 +39,7 @@ namespace StreamChatApp.Security.Encryption
         {
             using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(keySize))
             {
-                if (modulus == null || modulus.Count() != 0)
+                if (modulus == null || modulus.Count() == 0)
                 {
                     rsa.ImportParameters(rsaParameters);
                 }

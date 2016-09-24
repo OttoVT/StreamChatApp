@@ -1,26 +1,30 @@
-﻿using StreamChatApp.Security.Encryption;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StreamChatApp.Security.Encryption;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace StreamChatApp.TestTool
+namespace StreamChatApp.UtilsTest
 {
-    class Program
+    [TestClass]
+    public class AssymetricEncryptionTest
     {
-        static void Main(string[] args)
+        [TestMethod]
+        public void AssymetricEncryptionWorkflowTest()
         {
+            //Arrange
             var keySize = 1024;
             var encryptionProviderClient = new AssymetricEncryptionProvider(keySize);
             var encryptionProviderServer = new AssymetricEncryptionProvider(keySize);
-            var infoToEncrypt = Encoding.Unicode.GetBytes("lolHere");
+            var str = "lolHere";
+            var infoToEncrypt = Encoding.Unicode.GetBytes(str);
+            
+            //Act
             var serverModulus = encryptionProviderServer.GetModulus();
             var encryptedDate = encryptionProviderClient.Encrypt(infoToEncrypt, serverModulus);
-
             var decryptedData = encryptionProviderServer.Decrypt(encryptedDate);
-            Console.ReadKey();
+
+            //Assert
+            Assert.AreEqual(str, decryptedData);
         }
     }
 }
