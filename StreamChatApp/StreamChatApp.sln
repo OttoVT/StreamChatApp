@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.WPF", "StreamChatApp\StreamChatApp.WPF.csproj", "{260955EE-980A-4ED6-905F-306A61C8ED0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreamChatApp", "StreamChatApp", "{9DDFD926-86A2-4D49-A63F-8F875744B61C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreamChatApp.Communication", "StreamChatApp.Communication", "{0738D79E-36AE-4726-A784-253C4D9C87E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Communication.Server", "StreamChatApp.Communication.Server\StreamChatApp.Communication.Server.csproj", "{7E39849A-BAA3-4A30-B6F6-87A89C2A3418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Communication.Client", "StreamChatApp.Communication.Client\StreamChatApp.Communication.Client.csproj", "{EB91967F-FAD2-4FF6-9460-9D894A66BAD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreamChatApp.Common", "StreamChatApp.Common", "{81B286E3-A5A3-4A9E-ADB1-3AB35BF9CB5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Common.IoC_DI", "StreamChatApp.Common.IoC_DI\StreamChatApp.Common.IoC_DI.csproj", "{14C91973-20B3-46EA-AD14-4C993A7CD946}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreamChatApp.Model", "StreamChatApp.Model", "{ACE05D54-206A-44CA-AB09-5184DE57F044}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Model", "StreamChatApp.Model\StreamChatApp.Model.csproj", "{16C9E81D-C942-499F-8714-F77C4E9B1E0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Security", "StreamChatApp.Security\StreamChatApp.Security.csproj", "{2AAD0419-6F4B-405E-B932-2E0E1A492642}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.TestTool", "StreamChatApp.TestTool\StreamChatApp.TestTool.csproj", "{B8C83D28-D5E4-4FF4-A081-83AD014903CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreamChatApp.Tests", "StreamChatApp.Tests", "{A257C8B3-CBD3-428C-9394-27AEAC0BD23B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{260955EE-980A-4ED6-905F-306A61C8ED0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{260955EE-980A-4ED6-905F-306A61C8ED0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{260955EE-980A-4ED6-905F-306A61C8ED0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{260955EE-980A-4ED6-905F-306A61C8ED0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E39849A-BAA3-4A30-B6F6-87A89C2A3418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E39849A-BAA3-4A30-B6F6-87A89C2A3418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E39849A-BAA3-4A30-B6F6-87A89C2A3418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E39849A-BAA3-4A30-B6F6-87A89C2A3418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB91967F-FAD2-4FF6-9460-9D894A66BAD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB91967F-FAD2-4FF6-9460-9D894A66BAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB91967F-FAD2-4FF6-9460-9D894A66BAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB91967F-FAD2-4FF6-9460-9D894A66BAD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C91973-20B3-46EA-AD14-4C993A7CD946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C91973-20B3-46EA-AD14-4C993A7CD946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C91973-20B3-46EA-AD14-4C993A7CD946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C91973-20B3-46EA-AD14-4C993A7CD946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C9E81D-C942-499F-8714-F77C4E9B1E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C9E81D-C942-499F-8714-F77C4E9B1E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C9E81D-C942-499F-8714-F77C4E9B1E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C9E81D-C942-499F-8714-F77C4E9B1E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AAD0419-6F4B-405E-B932-2E0E1A492642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AAD0419-6F4B-405E-B932-2E0E1A492642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AAD0419-6F4B-405E-B932-2E0E1A492642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AAD0419-6F4B-405E-B932-2E0E1A492642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8C83D28-D5E4-4FF4-A081-83AD014903CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C83D28-D5E4-4FF4-A081-83AD014903CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C83D28-D5E4-4FF4-A081-83AD014903CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C83D28-D5E4-4FF4-A081-83AD014903CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{260955EE-980A-4ED6-905F-306A61C8ED0C} = {9DDFD926-86A2-4D49-A63F-8F875744B61C}
+		{0738D79E-36AE-4726-A784-253C4D9C87E0} = {9DDFD926-86A2-4D49-A63F-8F875744B61C}
+		{7E39849A-BAA3-4A30-B6F6-87A89C2A3418} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
+		{EB91967F-FAD2-4FF6-9460-9D894A66BAD1} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
+		{81B286E3-A5A3-4A9E-ADB1-3AB35BF9CB5F} = {9DDFD926-86A2-4D49-A63F-8F875744B61C}
+		{14C91973-20B3-46EA-AD14-4C993A7CD946} = {81B286E3-A5A3-4A9E-ADB1-3AB35BF9CB5F}
+		{ACE05D54-206A-44CA-AB09-5184DE57F044} = {9DDFD926-86A2-4D49-A63F-8F875744B61C}
+		{16C9E81D-C942-499F-8714-F77C4E9B1E0E} = {ACE05D54-206A-44CA-AB09-5184DE57F044}
+		{2AAD0419-6F4B-405E-B932-2E0E1A492642} = {81B286E3-A5A3-4A9E-ADB1-3AB35BF9CB5F}
+		{A257C8B3-CBD3-428C-9394-27AEAC0BD23B} = {9DDFD926-86A2-4D49-A63F-8F875744B61C}
+	EndGlobalSection
+EndGlobal
