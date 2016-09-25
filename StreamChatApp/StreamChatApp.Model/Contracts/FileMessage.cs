@@ -11,6 +11,8 @@ namespace StreamChatApp.Model.Contracts
     public class FileMessage
     {
         [DataMember]
+        public Guid SenderId { get; set; }
+        [DataMember]
         public string Sender { get; set; }
 
         [DataMember]

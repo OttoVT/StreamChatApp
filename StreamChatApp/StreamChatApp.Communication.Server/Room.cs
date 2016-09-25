@@ -14,46 +14,113 @@ namespace StreamChatApp.Communication.Server
     ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false)]
     public class RoomService : IRoomService
     {
-        Dictionary<Client, IRoomCallBack> clients = new Dictionary<Client, IRoomCallBack>();
-
-        List<Client> clientList = new List<Client>();
+        private Dictionary<Client, IRoomCallBack> clients = new Dictionary<Client, IRoomCallBack>();
+        private List<Client> clientList = new List<Client>();
+        private object syncObject = new object();
 
         public IRoomCallBack CurrentCallback
         {
             get
             {
                 return OperationContext.Current.GetCallbackChannel<IRoomCallBack>();
-
             }
         }
         public bool Connect(Model.Contracts.Client client)
         {
-            throw new NotImplementedException();
+            if (!clients.ContainsValue(CurrentCallback))
+            {
+                lock (syncObject)
+                {
+                    clients[client] = CurrentCallback;
+
+                    foreach (Client key in clients.Keys)
+                    {
+                        IRoomCallBack callback = clients[key];
+                        try
+                        {
+                            callback.RefreshClients(clientList);
+                            callback.UserJoin(client);
+                        }
+                        catch
+                        {
+                            clients.Remove(key);
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
         public void Disconnect(Model.Contracts.Client client)
         {
-            throw new NotImplementedException();
+            var c = clients.Keys.FirstOrDefault(x => x.ClientId == client.ClientId);
+            if (client.Name == c.Name)
+            {
+                lock (syncObject)
+                {
+                    this.clients.Remove(c);
+                    this.clientList.Remove(c);
+                    foreach (IRoomCallBack callback in clients.Values)
+                    {
+                        callback.RefreshClients(this.clientList);
+                        callback.UserLeave(client);
+                    }
+                }
+                return;
+            }
         }
 
         public void IsWriting(Model.Contracts.Client client)
         {
-            throw new NotImplementedException();
+            lock (syncObject)
+            {
+                foreach (var callback in clients.Values)
+                {
+                    callback.IsWritingCallback(client);
+                }
+            }
         }
 
         public void Say(Message msg)
         {
-            throw new NotImplementedException();
+            lock (syncObject)
+            {
+                foreach (var callback in clients.Values)
+                {
+                    callback.Receive(msg);
+                }
+            }
         }
 
         public bool SendFile(FileMessage fileMsg, Model.Contracts.Client receiver)
         {
-            throw new NotImplementedException();
+            var sender = clients.Keys.FirstOrDefault(x => x.ClientId == fileMsg.SenderId);
+            var rec = clients.Keys.FirstOrDefault(x => x.ClientId == receiver.ClientId);
+
+            Message msg = new Message();
+            msg.SenderId = fileMsg.SenderId;
+            msg.Sender = fileMsg.Sender;
+            msg.Content = "I'M SENDING FILE.. " + fileMsg.FileName;
+
+            var rcvrCallback = clients[sender];
+            var sndrCallback = clients[sender];
+
+            rcvrCallback?.ReceiveWhisper(msg, receiver);
+            rcvrCallback?.ReceiverFile(fileMsg, receiver);
+            sndrCallback?.ReceiveWhisper(msg, receiver);
+            return true;
         }
 
         public void Whisper(Message msg, Model.Contracts.Client receiver)
         {
-            throw new NotImplementedException();
+            var rec = clients.Keys.FirstOrDefault(x => x.ClientId == receiver.ClientId);
+            var sender = clients.Keys.FirstOrDefault(x => x.ClientId == msg.SenderId);
+            var callbackReciever = clients[rec];
+            var callbackSender = clients[rec];
+            callbackReciever.ReceiveWhisper(msg, rec);
+            callbackSender.ReceiveWhisper(msg, rec);
         }
     }
 }

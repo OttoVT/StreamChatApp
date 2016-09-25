@@ -11,6 +11,8 @@ namespace StreamChatApp.Model.Contracts
     public class Message
     {
         [DataMember]
+        public Guid SenderId { get; set; }
+        [DataMember]
         public string Sender { get; set; }
         [DataMember]
         public string Content { get; set; }
