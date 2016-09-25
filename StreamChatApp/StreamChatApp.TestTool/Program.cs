@@ -12,14 +12,7 @@ namespace StreamChatApp.TestTool
     {
         static void Main(string[] args)
         {
-            var keySize = 1024;
-            var encryptionProviderClient = new AssymetricEncryptionProvider(keySize);
-            var encryptionProviderServer = new AssymetricEncryptionProvider(keySize);
-            var infoToEncrypt = Encoding.Unicode.GetBytes("lolHere");
-            var serverModulus = encryptionProviderServer.GetModulus();
-            var encryptedDate = encryptionProviderClient.Encrypt(infoToEncrypt, serverModulus);
-
-            var decryptedData = encryptionProviderServer.Decrypt(encryptedDate);
+            
             Console.ReadKey();
         }
     }
