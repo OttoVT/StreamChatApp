@@ -7,14 +7,34 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush>
-                <GradientStop Color="LightSlateGray" Offset="0"/>
-                <GradientStop Color="White" Offset="0.5"/>
-                <GradientStop Color="LightSlateGray" Offset="0.9"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        
-        
+        <Menu IsMainMenu="True">
+            <MenuItem Header="_File" />
+            <MenuItem Header="_Edit" />
+            <MenuItem Header="_View" />
+            <MenuItem Header="_Window" />
+            <MenuItem Header="_Help" />
+        </Menu>
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="LightSlateGray" Offset="0"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                    <GradientStop Color="LightSlateGray" Offset="0.9"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackPanel Grid.Column="0">
+
+                <ListBox Name="chatListBoxMsgs" Margin="10" Height="227"/>
+                <TextBox x:Name="chatTxtBoxType" Height="39" Margin="10"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>

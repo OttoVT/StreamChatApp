@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StreamChatApp.Communication.ServerInterface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,55 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StreamChatApp.Model.Contracts;
 
 namespace StreamChatApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IRoomCallBack
     {
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        #region IRoomCallBack
+        public void IsWritingCallback(Client client)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Receive(Message msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReceiverFile(FileMessage fileMsg, Client receiver)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReceiveWhisper(Message msg, Client receiver)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RefreshClients(List<Client> clients)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UserJoin(Client client)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UserLeave(Client client)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
