@@ -1,0 +1,43 @@
+﻿<Window x:Class="StreamChatApp.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StreamChatApp"
+        mc:Ignorable="d"
+        Title="MainView" Height="350" Width="525">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="LightSlateGray" Offset="0"/>
+                <GradientStop Color="White" Offset="0.5"/>
+                <GradientStop Color="LightSlateGray" Offset="0.9"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Menu IsMainMenu="True">
+            <MenuItem Header="_File" />
+            <MenuItem Header="_Edit" />
+            <MenuItem Header="_View" />
+            <MenuItem Header="_Window" />
+            <MenuItem Header="_Help" />
+        </Menu>
+        <TabControl Margin="0,20,0,0">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Chat" Foreground="Blue" />
+                </StackPanel>
+                </TabItem.Header>
+                <ContentControl Content="{Binding ViewModel}" />
+                
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Host" Foreground="Green" />
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+        
+
+    </Grid>
+</Window>

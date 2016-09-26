@@ -15,14 +15,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using StreamChatApp.Model.Contracts;
 
-namespace StreamChatApp
+namespace StreamChatApp.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IRoomCallBack
+    public partial class MainView : Window, IRoomCallBack
     {
-        public MainWindow()
+        public MainView()
         {
             InitializeComponent();
         }
