@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreamChatApp.Communication.ServerInterface
+namespace StreamChatApp.Communication.CallBackInterface
 {
     public interface IRoomCallBack
     {

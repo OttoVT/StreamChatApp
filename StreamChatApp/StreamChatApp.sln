@@ -27,6 +27,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.UtilsTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Communication.ServerInterface", "StreamChatApp.Communication.ServerInterface\StreamChatApp.Communication.ServerInterface.csproj", "{CA7FCEFD-0A54-4DE5-8EA0-BEA4113E470D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Communication.BLL", "StreamChatApp.Communication.BLL\StreamChatApp.Communication.BLL.csproj", "{8EDF2D4C-0753-4C25-8046-2D37B16EB2F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Communication.BLLInterfaces", "StreamChatApp.Communication.BLLInterfaces\StreamChatApp.Communication.BLLInterfaces.csproj", "{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Communication.CallBackInterface", "StreamChatApp.Communication.CallBackInterface\StreamChatApp.Communication.CallBackInterface.csproj", "{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +67,18 @@ Global
 		{CA7FCEFD-0A54-4DE5-8EA0-BEA4113E470D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA7FCEFD-0A54-4DE5-8EA0-BEA4113E470D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA7FCEFD-0A54-4DE5-8EA0-BEA4113E470D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDF2D4C-0753-4C25-8046-2D37B16EB2F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDF2D4C-0753-4C25-8046-2D37B16EB2F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDF2D4C-0753-4C25-8046-2D37B16EB2F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDF2D4C-0753-4C25-8046-2D37B16EB2F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +94,8 @@ Global
 		{A257C8B3-CBD3-428C-9394-27AEAC0BD23B} = {9DDFD926-86A2-4D49-A63F-8F875744B61C}
 		{067BD2C5-A615-4DE6-A860-93B2FDA69A53} = {A257C8B3-CBD3-428C-9394-27AEAC0BD23B}
 		{CA7FCEFD-0A54-4DE5-8EA0-BEA4113E470D} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
+		{8EDF2D4C-0753-4C25-8046-2D37B16EB2F5} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
+		{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
+		{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
 	EndGlobalSection
 EndGlobal

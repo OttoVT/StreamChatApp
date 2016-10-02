@@ -1,41 +1,32 @@
-﻿using StreamChatApp.Communication.ServerInterface;
+﻿
+using StreamChatApp.Communication.CallBackInterface;
+using StreamChatApp.Model.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StreamChatApp.Model.Contracts;
-using System.ServiceModel;
-using StreamChatApp.Communication.CallBackInterface;
-using StreamChatApp.Communication.BLL.Logic;
 
-namespace StreamChatApp.Communication.Server
+namespace StreamChatApp.Communication.BLL.Logic
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
-    ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false)]
-    public class RoomService : IRoomService
+    public class RoomContext
     {
-        private readonly RoomContext roomContext;
+        private Dictionary<Client, IRoomCallBack> clients = new Dictionary<Client, IRoomCallBack>();
+        private List<Client> clientList = new List<Client>();
+        private object syncObject = new object();
+        public RoomContext()
+        { }
 
-        public RoomService(RoomContext roomContext)
+        public bool Connect(BLLRequestContext<Client> context)
         {
-            this.roomContext = roomContext;
-        }
+            var callBack = context.CallBack;
+            var client = context.Context;
 
-        public IRoomCallBack CurrentCallback
-        {
-            get
-            {
-                return OperationContext.Current.GetCallbackChannel<IRoomCallBack>();
-            }
-        }
-        public bool Connect(Model.Contracts.Client client)
-        {
-            if (!clients.ContainsValue(CurrentCallback))
+            if (!clients.ContainsValue(context.CallBack))
             {
                 lock (syncObject)
                 {
-                    clients[client] = CurrentCallback;
+                    clients[client] = context.CallBack;
 
                     foreach (Client key in clients.Keys)
                     {

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA7FCEFD-0A54-4DE5-8EA0-BEA4113E470D}</ProjectGuid>
+    <ProjectGuid>{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StreamChatApp.Communication.ServerInterface</RootNamespace>
-    <AssemblyName>StreamChatApp.Communication.ServerInterface</AssemblyName>
+    <RootNamespace>StreamChatApp.Communication.BLLInterfaces</RootNamespace>
+    <AssemblyName>StreamChatApp.Communication.BLLInterfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,14 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRoomService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\StreamChatApp.Model\StreamChatApp.Model.csproj">
-      <Project>{16C9E81D-C942-499F-8714-F77C4E9B1E0E}</Project>
-      <Name>StreamChatApp.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
