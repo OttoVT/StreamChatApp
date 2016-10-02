@@ -1,4 +1,8 @@
 ﻿using StreamChatApp.App_Start;
+using StreamChatApp.View;
+using StreamChatApp.ViewModel;
+using Microsoft.Practices.ServiceLocation;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

@@ -5,16 +5,18 @@
              StartupUri="View/MainView.xaml"
              xmlns:View="clr-namespace:StreamChatApp.View"
              xmlns:ViewModel="clr-namespace:StreamChatApp.ViewModel"
+             xmlns:Utils="clr-namespace:StreamChatApp.Utils"
              >
     <Application.Resources>
-        <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
-            <View:MainView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
-            <View:MainView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
-            <View:MainView />
+        <!--<ViewModelLocator x:Key="ViewModelLocator"/>-->
+        <Utils:ViewModelLocator x:Key="ViewModelLocator">
+            <Utils:ViewModelLocator.Resolver>
+                <Utils:ViewModelResolver />
+            </Utils:ViewModelLocator.Resolver>
+        </Utils:ViewModelLocator>
+
+        <DataTemplate DataType="{x:Type ViewModel:ChatViewModel}">
+            <View:ChatView />
         </DataTemplate>
     </Application.Resources>
 </Application>

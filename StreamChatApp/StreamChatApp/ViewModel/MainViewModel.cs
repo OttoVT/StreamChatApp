@@ -8,16 +8,10 @@ namespace StreamChatApp.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private ViewModelBase _currentViewModel;
-
-        public ViewModelBase CurrentViewModel
+        public ChatViewModel ChatViewModel { get; private set; }
+        public MainViewModel(ChatViewModel chatViewModel)
         {
-            get { return _currentViewModel; }
-            set
-            {
-                _currentViewModel = value;
-                this.RaisePropertyChanged(nameof(CurrentViewModel));
-            }
+            ChatViewModel = chatViewModel;
         }
     }
 }

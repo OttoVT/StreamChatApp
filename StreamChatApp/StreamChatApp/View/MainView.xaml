@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StreamChatApp"
+        xmlns:views="clr-namespace:StreamChatApp.View"
         mc:Ignorable="d"
-        Title="MainView" Height="350" Width="525">
+        Title="MainView" Height="350" Width="525"
+        DataContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}"
+        >
     <Grid>
         <Grid.Background>
             <LinearGradientBrush>
@@ -25,11 +28,10 @@
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Chat" Foreground="Blue" />
-                </StackPanel>
+                        <TextBlock Text="Chat" Foreground="Blue" MouseDown="TextBlock_MouseDown" />
+                    </StackPanel>
                 </TabItem.Header>
-                <ContentControl Content="{Binding ViewModel}" />
-                
+                <views:ChatView/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -37,7 +39,5 @@
                 </TabItem.Header>
             </TabItem>
         </TabControl>
-        
-
     </Grid>
 </Window>

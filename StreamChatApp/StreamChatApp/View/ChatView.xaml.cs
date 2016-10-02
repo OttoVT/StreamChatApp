@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StreamChatApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace StreamChatApp.View
     /// <summary>
     /// Interaction logic for ChatView.xaml
     /// </summary>
-    public partial class ChatView : Window
+    public partial class ChatView : UserControl
     {
         public ChatView()
         {

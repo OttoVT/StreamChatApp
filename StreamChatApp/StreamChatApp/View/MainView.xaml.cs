@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using StreamChatApp.Model.Contracts;
+using StreamChatApp.ViewModel;
 
 namespace StreamChatApp.View
 {
@@ -63,5 +64,10 @@ namespace StreamChatApp.View
             throw new NotImplementedException();
         }
         #endregion
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
