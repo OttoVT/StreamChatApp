@@ -6,8 +6,14 @@
              xmlns:local="clr-namespace:StreamChatApp.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:resx="clr-namespace:StreamChatApp.Properties"
              DataContext="{Binding ChatViewModel, Source={StaticResource ViewModelLocator}}"
         >
+    <UserControl.Resources>
+        <Style x:Key="StackPanelInners" TargetType="{x:Type Control}">
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -16,11 +22,16 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <ListBox Name="chatListBoxMsgs" Margin="10" Height="173"/>
-                <TextBox Name="chatTxtBoxType" Height="39" Margin="10"/>
+                <ListBox Name="chatListBoxMsgs" Style="{StaticResource StackPanelInners}" Height="173"/>
+                <TextBox Name="chatTxtBoxType" Style="{StaticResource StackPanelInners}" Height="39"/>
+                <WrapPanel>
+                    <Button x:Name="sendMessageButton" Style="{StaticResource StackPanelInners}" Content="{x:Static resx:Resources.SendFileButton}"/>
+                </WrapPanel>
             </StackPanel>
 
-            <StackPanel Grid.Column="1">
+            <StackPanel Grid.Column="1" >
+                <ListBox Name="chatListBoxUsers" Style="{StaticResource StackPanelInners}" Height="85"/>
+                <Button x:Name="sendFileButton" Style="{StaticResource StackPanelInners}" Content="{x:Static resx:Resources.SendFileButton}"/>
             </StackPanel>
         </Grid>
     </Grid>

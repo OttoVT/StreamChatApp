@@ -18,6 +18,10 @@ namespace StreamChatApp.Communication.Server
         private List<Client> clientList = new List<Client>();
         private object syncObject = new object();
 
+        public RoomService()
+        {
+        }
+
         public IRoomCallBack CurrentCallback
         {
             get
