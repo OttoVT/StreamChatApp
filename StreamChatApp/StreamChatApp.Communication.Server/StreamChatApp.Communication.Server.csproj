@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StreamChatApp.Communication.BLLInterfaces\StreamChatApp.Communication.BLLInterfaces.csproj">
+      <Project>{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D}</Project>
+      <Name>StreamChatApp.Communication.BLLInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StreamChatApp.Communication.BLL\StreamChatApp.Communication.BLL.csproj">
       <Project>{8EDF2D4C-0753-4C25-8046-2D37B16EB2F5}</Project>
       <Name>StreamChatApp.Communication.BLL</Name>

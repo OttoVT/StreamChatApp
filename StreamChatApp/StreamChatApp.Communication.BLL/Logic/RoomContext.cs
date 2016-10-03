@@ -1,4 +1,5 @@
 ﻿
+using StreamChatApp.Communication.BLLInterface;
 using StreamChatApp.Communication.CallBackInterface;
 using StreamChatApp.Model.Contracts;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StreamChatApp.Communication.BLL.Logic
 {
-    public class RoomContext
+    public class RoomContext : IRoomContext
     {
         private Dictionary<Client, IRoomCallBack> clients = new Dictionary<Client, IRoomCallBack>();
         private List<Client> clientList = new List<Client>();
@@ -48,8 +49,9 @@ namespace StreamChatApp.Communication.BLL.Logic
             return false;
         }
 
-        public void Disconnect(Model.Contracts.Client client)
+        public void Disconnect(BLLRequestContext<Model.Contracts.Client> context)
         {
+            var client = context.Context;
             var c = clients.Keys.FirstOrDefault(x => x.ClientId == client.ClientId);
             if (client.Name == c.Name)
             {
@@ -67,8 +69,9 @@ namespace StreamChatApp.Communication.BLL.Logic
             }
         }
 
-        public void IsWriting(Model.Contracts.Client client)
+        public void IsWriting(BLLRequestContext< Model.Contracts.Client> context)
         {
+            var client = context.Context;
             lock (syncObject)
             {
                 foreach (var callback in clients.Values)
@@ -78,8 +81,9 @@ namespace StreamChatApp.Communication.BLL.Logic
             }
         }
 
-        public void Say(Message msg)
+        public void Say(BLLRequestContext<Message> request)
         {
+            var msg = request.Context;
             lock (syncObject)
             {
                 foreach (var callback in clients.Values)

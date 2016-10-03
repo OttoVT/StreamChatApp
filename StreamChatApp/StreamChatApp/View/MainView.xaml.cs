@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using StreamChatApp.Model.Contracts;
 using StreamChatApp.ViewModel;
+using StreamChatApp.Communication.CallBackInterface;
 
 namespace StreamChatApp.View
 {

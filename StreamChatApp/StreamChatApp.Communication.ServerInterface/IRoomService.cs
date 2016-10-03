@@ -1,4 +1,5 @@
-﻿using StreamChatApp.Model;
+﻿using StreamChatApp.Communication.CallBackInterface;
+using StreamChatApp.Model;
 using StreamChatApp.Model.Contracts;
 using System;
 using System.Collections.Generic;

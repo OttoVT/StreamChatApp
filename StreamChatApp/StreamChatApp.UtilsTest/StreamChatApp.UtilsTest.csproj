@@ -50,10 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IPDiscoveryTest.cs" />
     <Compile Include="AssymetricEncryptionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StreamChatApp.Common.IPDiscovery\StreamChatApp.Common.IPDiscovery.csproj">
+      <Project>{7065A0B2-82ED-46F5-BFA4-1EEE145A9E98}</Project>
+      <Name>StreamChatApp.Common.IPDiscovery</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StreamChatApp.Security\StreamChatApp.Security.csproj">
       <Project>{2AAD0419-6F4B-405E-B932-2E0E1A492642}</Project>
       <Name>StreamChatApp.Security</Name>

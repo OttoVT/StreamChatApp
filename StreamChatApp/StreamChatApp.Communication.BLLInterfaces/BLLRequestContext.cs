@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreamChatApp.Communication.BLL
+namespace StreamChatApp.Communication.BLLInterface
 {
     public class BLLRequestContext
     {

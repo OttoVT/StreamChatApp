@@ -8,10 +8,8 @@ namespace StreamChatApp.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        public ChatViewModel ChatViewModel { get; private set; }
-        public MainViewModel(ChatViewModel chatViewModel)
+        public MainViewModel()
         {
-            ChatViewModel = chatViewModel;
         }
     }
 }

@@ -8,6 +8,7 @@ using StreamChatApp.Model.Contracts;
 using System.ServiceModel;
 using StreamChatApp.Communication.CallBackInterface;
 using StreamChatApp.Communication.BLL.Logic;
+using StreamChatApp.Communication.BLLInterface;
 
 namespace StreamChatApp.Communication.Server
 {
@@ -15,9 +16,9 @@ namespace StreamChatApp.Communication.Server
     ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false)]
     public class RoomService : IRoomService
     {
-        private readonly RoomContext roomContext;
+        private readonly IRoomContext roomContext;
 
-        public RoomService(RoomContext roomContext)
+        public RoomService(IRoomContext roomContext)
         {
             this.roomContext = roomContext;
         }
@@ -31,100 +32,56 @@ namespace StreamChatApp.Communication.Server
         }
         public bool Connect(Model.Contracts.Client client)
         {
-            if (!clients.ContainsValue(CurrentCallback))
+            var request = new BLLRequestContext<Client>()
             {
-                lock (syncObject)
-                {
-                    clients[client] = CurrentCallback;
+                CallBack = CurrentCallback,
+                Context = client,
+            };
 
-                    foreach (Client key in clients.Keys)
-                    {
-                        IRoomCallBack callback = clients[key];
-                        try
-                        {
-                            callback.RefreshClients(clientList);
-                            callback.UserJoin(client);
-                        }
-                        catch
-                        {
-                            clients.Remove(key);
-                            return false;
-                        }
-                    }
-                }
-            }
-
-            return false;
+            return roomContext.Connect(request);
         }
 
         public void Disconnect(Model.Contracts.Client client)
         {
-            var c = clients.Keys.FirstOrDefault(x => x.ClientId == client.ClientId);
-            if (client.Name == c.Name)
+            var request = new BLLRequestContext<Client>()
             {
-                lock (syncObject)
-                {
-                    this.clients.Remove(c);
-                    this.clientList.Remove(c);
-                    foreach (IRoomCallBack callback in clients.Values)
-                    {
-                        callback.RefreshClients(this.clientList);
-                        callback.UserLeave(client);
-                    }
-                }
-                return;
-            }
+                CallBack = CurrentCallback,
+                Context = client,
+            };
+
+            roomContext.Disconnect(request);
         }
 
         public void IsWriting(Model.Contracts.Client client)
         {
-            lock (syncObject)
+            var request = new BLLRequestContext<Client>()
             {
-                foreach (var callback in clients.Values)
-                {
-                    callback.IsWritingCallback(client);
-                }
-            }
+                CallBack = CurrentCallback,
+                Context = client,
+            };
+
+            roomContext.IsWriting(request);
         }
 
         public void Say(Message msg)
         {
-            lock (syncObject)
+            var request = new BLLRequestContext<Message>()
             {
-                foreach (var callback in clients.Values)
-                {
-                    callback.Receive(msg);
-                }
-            }
+                CallBack = CurrentCallback,
+                Context = msg,
+            };
+
+            roomContext.Say(request);
         }
 
         public bool SendFile(FileMessage fileMsg, Model.Contracts.Client receiver)
         {
-            var sender = clients.Keys.FirstOrDefault(x => x.ClientId == fileMsg.SenderId);
-            var rec = clients.Keys.FirstOrDefault(x => x.ClientId == receiver.ClientId);
-
-            Message msg = new Message();
-            msg.SenderId = fileMsg.SenderId;
-            msg.Sender = fileMsg.Sender;
-            msg.Content = "I'M SENDING FILE.. " + fileMsg.FileName;
-
-            var rcvrCallback = clients[sender];
-            var sndrCallback = clients[sender];
-
-            rcvrCallback?.ReceiveWhisper(msg, receiver);
-            rcvrCallback?.ReceiverFile(fileMsg, receiver);
-            sndrCallback?.ReceiveWhisper(msg, receiver);
-            return true;
+            return roomContext.SendFile(fileMsg, receiver);
         }
 
         public void Whisper(Message msg, Model.Contracts.Client receiver)
         {
-            var rec = clients.Keys.FirstOrDefault(x => x.ClientId == receiver.ClientId);
-            var sender = clients.Keys.FirstOrDefault(x => x.ClientId == msg.SenderId);
-            var callbackReciever = clients[rec];
-            var callbackSender = clients[rec];
-            callbackReciever.ReceiveWhisper(msg, rec);
-            callbackSender.ReceiveWhisper(msg, rec);
+            roomContext.Whisper(msg, receiver);
         }
     }
 }

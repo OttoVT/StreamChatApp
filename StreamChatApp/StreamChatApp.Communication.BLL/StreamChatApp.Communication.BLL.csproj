@@ -40,11 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLLRequestContext.cs" />
     <Compile Include="Logic\RoomContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StreamChatApp.Communication.BLLInterfaces\StreamChatApp.Communication.BLLInterfaces.csproj">
+      <Project>{C5F405F1-D33F-4E7E-B0EF-5C5C8917454D}</Project>
+      <Name>StreamChatApp.Communication.BLLInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StreamChatApp.Communication.CallBackInterface\StreamChatApp.Communication.CallBackInterface.csproj">
       <Project>{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}</Project>
       <Name>StreamChatApp.Communication.CallBackInterface</Name>
