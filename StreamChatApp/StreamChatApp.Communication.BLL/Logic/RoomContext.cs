@@ -107,7 +107,7 @@ namespace StreamChatApp.Communication.BLL.Logic
             var sndrCallback = clients[sender];
 
             rcvrCallback?.ReceiveWhisper(msg, receiver);
-            rcvrCallback?.ReceiverFile(fileMsg, receiver);
+            rcvrCallback?.ReceiveFile(fileMsg, receiver);
             sndrCallback?.ReceiveWhisper(msg, receiver);
             return true;
         }

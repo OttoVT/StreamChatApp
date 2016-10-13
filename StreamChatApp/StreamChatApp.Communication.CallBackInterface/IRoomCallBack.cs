@@ -24,7 +24,7 @@ namespace StreamChatApp.Communication.CallBackInterface
         void IsWritingCallback(Client client);
 
         [OperationContract(IsOneWay = true)]
-        void ReceiverFile(FileMessage fileMsg, Client receiver);
+        void ReceiveFile(FileMessage fileMsg, Client receiver);
 
         [OperationContract(IsOneWay = true)]
         void UserJoin(Client client);

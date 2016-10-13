@@ -10,14 +10,17 @@ using StreamChatApp.Communication.ServerInterface;
 
 namespace StreamChatApp.Communication.ClientLib
 {
-    public class RoomClient
+    public class RoomClient : IDisposable
     {
         protected InstanceContext instanceContext;
         protected IRoomService roomService;
+        
         public RoomClient()
         {
-            instanceContext = new InstanceContext(new CallBackHandler());
+            CallBackObserver = new CallBackObserver();
+            instanceContext = new InstanceContext(new CallBackHandler(CallBackObserver));
         }
+        public CallBackObserver CallBackObserver { get; protected set; }
 
         public void Connect(string address)
         {
@@ -34,43 +37,119 @@ namespace StreamChatApp.Communication.ClientLib
         {
             this.roomService.Disconnect(null);
         }
+
+        public void Dispose()
+        {
+            //TODO: unregister all;
+        }
     }
 
-    public class CallBackHandler : IRoomCallBack
+    public class CallBackObserver : IRoomCallBack
     {
-        public void IsWritingCallback(Client client)
+        #region delegate
+        public delegate void RefreshClientsEventHandler(object sender, List<Client> clients);
+        public delegate void ReceiveEventHandler(object sender, Message msg);
+        public delegate void ReceiveWhisperEventHandler(object sender, Message msg, Client receiver);
+        public delegate void IsWritingCallbackEventHandler(object sender, Client receiver);
+        public delegate void ReceiveFileEventHandler(object sender, FileMessage fileMsg, Client receiver);
+        public delegate void UserJoinEventHandler(object sender, Client receiver);
+        public delegate void UserLeaveEventHandler(object sender, Client receiver);
+        #endregion
+
+        #region events
+        // Declare the event.
+        public event RefreshClientsEventHandler RefreshClientsEvent;
+        public event ReceiveEventHandler ReceiveEvent;
+        public event ReceiveWhisperEventHandler ReceiveWhisperEvent;
+        public event IsWritingCallbackEventHandler IsWritingCallbackEvent;
+        public event ReceiveFileEventHandler ReceiveFileEvent;
+        public event UserJoinEventHandler UserJoinEvent;
+        public event UserLeaveEventHandler UserLeaveEvent;
+        #endregion
+
+        public void RefreshClients(List<Client> clients)
         {
-            throw new NotImplementedException();
+            if (RefreshClientsEvent != null)
+                RefreshClientsEvent.Invoke(this, clients);
         }
 
         public void Receive(Message msg)
         {
-            throw new NotImplementedException();
-        }
-
-        public void ReceiverFile(FileMessage fileMsg, Client receiver)
-        {
-            throw new NotImplementedException();
+            if (ReceiveEvent != null)
+                ReceiveEvent.Invoke(this, msg);
         }
 
         public void ReceiveWhisper(Message msg, Client receiver)
         {
-            throw new NotImplementedException();
+            if (ReceiveWhisperEvent != null)
+                ReceiveWhisperEvent.Invoke(this, msg, receiver);
         }
 
-        public void RefreshClients(List<Client> clients)
+        public void IsWritingCallback(Client client)
         {
-            throw new NotImplementedException();
+            if (IsWritingCallbackEvent != null)
+                IsWritingCallbackEvent.Invoke(this, client);
+        }
+
+        public void ReceiveFile(FileMessage fileMsg, Client receiver)
+        {
+            if(ReceiveFileEvent != null)
+                ReceiveFileEvent.Invoke(this, fileMsg, receiver);
         }
 
         public void UserJoin(Client client)
         {
-            throw new NotImplementedException();
+            if (UserJoinEvent != null)
+                UserJoinEvent.Invoke(this, client);
         }
 
         public void UserLeave(Client client)
         {
-            throw new NotImplementedException();
+            if (UserLeaveEvent != null)
+                UserLeaveEvent.Invoke(this, client);
+        }
+    }
+
+    internal class CallBackHandler : IRoomCallBack
+    {
+        protected CallBackObserver observer;
+        public CallBackHandler(CallBackObserver observer)
+        {
+            this.observer = observer;
+        }
+        public void IsWritingCallback(Client client)
+        {
+            observer.IsWritingCallback(client);
+        }
+
+        public void Receive(Message msg)
+        {
+            observer.Receive(msg);
+        }
+
+        public void ReceiveFile(FileMessage fileMsg, Client receiver)
+        {
+            observer.ReceiveFile(fileMsg, receiver);
+        }
+
+        public void ReceiveWhisper(Message msg, Client receiver)
+        {
+            observer.ReceiveWhisper(msg, receiver);
+        }
+
+        public void RefreshClients(List<Client> clients)
+        {
+            observer.RefreshClients(clients);
+        }
+
+        public void UserJoin(Client client)
+        {
+            observer.UserJoin(client);
+        }
+
+        public void UserLeave(Client client)
+        {
+            observer.UserLeave(client);
         }
     }
 }

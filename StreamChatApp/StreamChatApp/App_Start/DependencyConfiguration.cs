@@ -34,7 +34,6 @@ namespace StreamChatApp.App_Start
             #region Communication
             container.RegisterType<IRoomContext, RoomContext>();
             container.RegisterType<IRoomService, RoomService>();
-            container.RegisterType<IRoomService, RoomService>("Client");
             container.RegisterType<IRoomHost, RoomHost>();
             #endregion
 

@@ -40,7 +40,7 @@ namespace StreamChatApp.View
             throw new NotImplementedException();
         }
 
-        public void ReceiverFile(FileMessage fileMsg, Client receiver)
+        public void ReceiveFile(FileMessage fileMsg, Client receiver)
         {
             throw new NotImplementedException();
         }

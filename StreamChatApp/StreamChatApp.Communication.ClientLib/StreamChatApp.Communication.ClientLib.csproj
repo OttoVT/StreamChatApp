@@ -49,6 +49,14 @@
       <Project>{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}</Project>
       <Name>StreamChatApp.Communication.CallBackInterface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StreamChatApp.Communication.ServerInterface\StreamChatApp.Communication.ServerInterface.csproj">
+      <Project>{CA7FCEFD-0A54-4DE5-8EA0-BEA4113E470D}</Project>
+      <Name>StreamChatApp.Communication.ServerInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreamChatApp.Model\StreamChatApp.Model.csproj">
+      <Project>{16c9e81d-c942-499f-8714-f77c4e9b1e0e}</Project>
+      <Name>StreamChatApp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
