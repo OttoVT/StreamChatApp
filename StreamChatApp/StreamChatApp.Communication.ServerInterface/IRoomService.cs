@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace StreamChatApp.Communication.ServerInterface
 {
 
-    [ServiceContract(SessionMode = SessionMode.Allowed, CallbackContract = typeof(IRoomCallBack))]
+    [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IRoomCallBack))]
     public interface IRoomService
     {
         [OperationContract(IsInitiating = true)]

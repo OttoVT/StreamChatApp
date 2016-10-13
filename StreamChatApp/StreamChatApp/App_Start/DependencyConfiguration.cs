@@ -5,6 +5,7 @@ using StreamChatApp.Communication.BLLInterface;
 using StreamChatApp.Communication.Server;
 using StreamChatApp.Communication.ServerInterface;
 using StreamChatApp.Hosting;
+using StreamChatApp.Model;
 using StreamChatApp.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -33,16 +34,19 @@ namespace StreamChatApp.App_Start
             #region Communication
             container.RegisterType<IRoomContext, RoomContext>();
             container.RegisterType<IRoomService, RoomService>();
+            container.RegisterType<IRoomService, RoomService>("Client");
             container.RegisterType<IRoomHost, RoomHost>();
             #endregion
 
             #region Model
-
+            container.RegisterType<HostModel>();
+            container.RegisterType<HostViewModel>();
             #endregion
 
             #region ViewModel
             container.RegisterType<MainViewModel>();
             container.RegisterType<ChatViewModel>();
+            container.RegisterType<HostViewModel>();
             #endregion
             #endregion
         }

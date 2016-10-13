@@ -16,13 +16,13 @@ namespace StreamChatApp.Hosting
 
         public RoomHost(IRoomService roomService)
         {
-            roomService = this.roomService;
+            this.roomService = roomService;
         }
 
         public void StartRoom(int port)
         {
             string httpAddr = "http://localhost:" + port.ToString() + "/RoomService";
-            string tcpAddr = "net.tcp://localhost:" + port.ToString() + "/RoomService";
+            string tcpAddr = "net.tcp://localhost:" + (port + 1).ToString() + "/RoomService";
             try
             {
                 Uri httpUri = new Uri(httpAddr);
@@ -34,7 +34,7 @@ namespace StreamChatApp.Hosting
                 host.AddServiceEndpoint(typeof(IMetadataExchange),
                   MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
-                BasicHttpBinding httpb = new BasicHttpBinding();
+                WSDualHttpBinding httpb = new WSDualHttpBinding();
                 NetTcpBinding tcpb = new NetTcpBinding();
                 host.AddServiceEndpoint(typeof(IRoomService), httpb, httpAddr);
                 host.AddServiceEndpoint(typeof(IRoomService), tcpb, tcpAddr);

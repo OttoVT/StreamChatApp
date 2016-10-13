@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Common.IPDisc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Hosting", "StreamChatApp.Hosting\StreamChatApp.Hosting.csproj", "{7BE5C4D4-45D8-4B1D-AC4B-9A6294F3FD05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamChatApp.Communication.ClientLib", "StreamChatApp.Communication.ClientLib\StreamChatApp.Communication.ClientLib.csproj", "{1CD4A3D1-2F76-4B41-8955-2E22922CF042}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{7BE5C4D4-45D8-4B1D-AC4B-9A6294F3FD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BE5C4D4-45D8-4B1D-AC4B-9A6294F3FD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BE5C4D4-45D8-4B1D-AC4B-9A6294F3FD05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CD4A3D1-2F76-4B41-8955-2E22922CF042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD4A3D1-2F76-4B41-8955-2E22922CF042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD4A3D1-2F76-4B41-8955-2E22922CF042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD4A3D1-2F76-4B41-8955-2E22922CF042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,5 +117,6 @@ Global
 		{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
 		{7065A0B2-82ED-46F5-BFA4-1EEE145A9E98} = {81B286E3-A5A3-4A9E-ADB1-3AB35BF9CB5F}
 		{7BE5C4D4-45D8-4B1D-AC4B-9A6294F3FD05} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
+		{1CD4A3D1-2F76-4B41-8955-2E22922CF042} = {0738D79E-36AE-4726-A784-253C4D9C87E0}
 	EndGlobalSection
 EndGlobal

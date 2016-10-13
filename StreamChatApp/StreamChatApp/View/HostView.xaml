@@ -25,7 +25,8 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" >
-                <Button Content="Start" Command="{Binding }" />
+                <Button Content="Start" Command="{Binding StartHost}" />
+                <Button Content="Stop" Command="{Binding StopHost}" />
             </StackPanel>
         </Grid>
     </Grid>

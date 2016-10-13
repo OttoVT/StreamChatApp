@@ -8,6 +8,10 @@ namespace StreamChatApp.ViewModel
 {
     public class ChatViewModel : ViewModelBase
     {
-
+        protected IRoomClient roomClient;
+        public ChatViewModel(IRoomClient roomClient)
+        {
+            this.roomClient = roomClient;
+        }
     }
 }

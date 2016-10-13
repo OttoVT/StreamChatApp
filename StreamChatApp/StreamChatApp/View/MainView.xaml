@@ -37,6 +37,7 @@
                 <TabItem.Header>
                     <TextBlock Text="Host" Foreground="Green" />
                 </TabItem.Header>
+                <views:HostView/>
             </TabItem>
         </TabControl>
     </Grid>

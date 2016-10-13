@@ -18,9 +18,13 @@ namespace StreamChatApp
     /// </summary>
     public partial class App : Application
     {
-        public void StartUp()
+        protected override void OnStartup(StartupEventArgs e)
         {
             DependencyConfiguration.ConfigureDependencies();
+            base.OnStartup(e);
+        }
+        public void StartUp()
+        {
         }
     }
 }

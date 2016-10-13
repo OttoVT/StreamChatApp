@@ -18,7 +18,7 @@ namespace StreamChatApp.ViewModel
         {
             this.hostModel = hostModel;
             StartHost = new DelegateCommand((a) => { this.hostModel.Start(); }, null);
-            StartHost = new DelegateCommand((a) => { this.hostModel.Stop(); }, null);
+            StopHost = new DelegateCommand((a) => { this.hostModel.Stop(); }, null);
         }
     }
 }
