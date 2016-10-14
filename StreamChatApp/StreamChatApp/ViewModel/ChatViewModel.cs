@@ -1,5 +1,8 @@
-﻿using StreamChatApp.Model;
+﻿using Microsoft.Practices.ServiceLocation;
+using StreamChatApp.Commands;
+using StreamChatApp.Model;
 using StreamChatApp.Model.Contracts;
+using StreamChatApp.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,11 +25,39 @@ namespace StreamChatApp.ViewModel
             this.chatModel.CallBackObserver.RefreshClientsEvent += RefreshClients;
             this.chatModel.CallBackObserver.UserJoinEvent += UserJoin;
             this.chatModel.CallBackObserver.UserLeaveEvent += UserLeave;
+
+            ClientsInRoom = new ObservableCollection<Client>();
+            ChatHistory = new ObservableCollection<Message>();
+
+            ConnectToRoom = new DelegateCommand((x) =>
+            {
+                var window = (ConnectionView)ServiceLocator.Current.GetService(typeof(ConnectionView));
+                if (window.ShowDialog().Value == true)
+                {
+                    //var connectionVM = (window.DataContext as ConnectionViewModel);
+                    chatModel.Connect();
+                }
+            }, null);
+
+            SendMessage = new DelegateCommand((x) =>
+            {
+                chatModel.Say(MessageText);
+            }, null);
         }
 
+        #region Commands
+        public DelegateCommand ConnectToRoom { get; set; }
+        public DelegateCommand SendMessage { get; set; }
+        #endregion
+
+        public string MessageText
+        {
+            get; set;
+        }
         public ObservableCollection<Client> ClientsInRoom { get; }
         public ObservableCollection<Message> ChatHistory { get; protected set; }
 
+        #region Methods
         public void IsWritingCallback(Client client)
         {
             throw new NotImplementedException();
@@ -34,7 +65,10 @@ namespace StreamChatApp.ViewModel
 
         public void Receive(Message msg)
         {
-            ChatHistory.Add(msg);
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                ChatHistory.Add(msg);
+            });
         }
 
         public void ReceiveFile(FileMessage fileMsg, Client receiver)
@@ -62,5 +96,7 @@ namespace StreamChatApp.ViewModel
         {
             ClientsInRoom.Remove(client);
         }
+        #endregion
+
     }
 }

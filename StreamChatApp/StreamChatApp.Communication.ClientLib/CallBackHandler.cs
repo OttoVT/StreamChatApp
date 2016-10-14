@@ -3,11 +3,13 @@ using StreamChatApp.Model.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace StreamChatApp.Communication.ClientLib
 {
+    [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false)]
     internal class CallBackHandler : IRoomCallBack
     {
         protected IRoomCallBack roomCallBack;

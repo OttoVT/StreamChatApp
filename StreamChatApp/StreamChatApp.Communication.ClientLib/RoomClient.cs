@@ -16,12 +16,19 @@ namespace StreamChatApp.Communication.ClientLib
         protected InstanceContext instanceContext;
         protected IRoomService roomService;
         protected ICallBackObserver callBackObserver;
-        protected Client currentUser;
         protected IUserContext userContext;
+        private DuplexChannelFactory<IRoomService> factory;
 
         public RoomClient(ICallBackObserver callBackObserver, IUserContext userContext)
         {
             this.userContext = userContext;
+            userContext.CurrentUser = new Client()
+            {
+                ClientId = new Guid(),
+                Name = "User1",
+                OpenKey = "",
+                Time = DateTime.Now
+            };
             this.callBackObserver = callBackObserver;
             this.instanceContext = new InstanceContext(new CallBackHandler(this.callBackObserver));
         }
@@ -36,18 +43,17 @@ namespace StreamChatApp.Communication.ClientLib
         public void Connect(string address)
         {
             NetTcpBinding tcpb = new NetTcpBinding();
-            using (DuplexChannelFactory<IRoomService> factory
-                = new DuplexChannelFactory<IRoomService>(instanceContext, tcpb))
-            {
+            factory = new DuplexChannelFactory<IRoomService>(instanceContext, tcpb);
+
                 factory.Endpoint.Address = new EndpointAddress(address);
-                this.roomService = factory.CreateChannel();
-                this.roomService.Connect(currentUser);
-            }
+            this.roomService = factory.CreateChannel();
+            this.roomService.Connect(userContext.CurrentUser);
+
         }
 
         public void Disconnect()
         {
-            this.roomService.Disconnect(currentUser);
+            this.roomService.Disconnect(userContext.CurrentUser);
         }
 
         public void Say(Message msg)
@@ -62,7 +68,7 @@ namespace StreamChatApp.Communication.ClientLib
 
         public void IsWriting()
         {
-            roomService.IsWriting(currentUser);
+            roomService.IsWriting(userContext.CurrentUser);
         }
 
         public bool SendFile(FileMessage fileMsg, Client receiver)
@@ -75,6 +81,7 @@ namespace StreamChatApp.Communication.ClientLib
             Disconnect();
             //TODO: unregister all;
             callBackObserver?.Unsubscribe();
+            factory.Close();
             instanceContext.Close();
         }
         #endregion

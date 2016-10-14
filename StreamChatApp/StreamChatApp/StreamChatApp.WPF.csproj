@@ -119,11 +119,13 @@
     </Compile>
     <Compile Include="App_Start\DependencyConfiguration.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Model\ConnectionModel.cs" />
     <Compile Include="Model\ChatModel.cs" />
     <Compile Include="Model\HostModel.cs" />
     <Compile Include="Utils\IViewModelResolver.cs" />
     <Compile Include="Utils\ViewModelLocator.cs" />
     <Compile Include="Utils\ViewModelResolver.cs" />
+    <Compile Include="ViewModel\ConnectionViewModel.cs" />
     <Compile Include="ViewModel\HostViewModel.cs" />
     <Compile Include="ViewModel\ChatViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

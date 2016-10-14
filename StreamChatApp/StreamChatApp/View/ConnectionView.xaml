@@ -1,15 +1,20 @@
 ﻿<Window x:Class="StreamChatApp.View.ConnectionView"
+                x:Name="ConnectionWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StreamChatApp.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="125" 
+             d:DesignWidth="125"
              xmlns:resx="clr-namespace:StreamChatApp.Properties"
              DataContext="{Binding ConnectionViewModel, Source={StaticResource ViewModelLocator}}"
         >
-    <Grid>
-        ConnectionView
-    </Grid>
+    <StackPanel>
+        <TextBox Margin="10 10" Text="{Binding IpAddress}"></TextBox>
+        <Button Margin="10 0" Command="{Binding ConnectToRoom, Mode=OneWay}" 
+                CommandParameter="{Binding ElementName=ConnectionWindow}">
+            Connect</Button>
+    </StackPanel>
 </Window>

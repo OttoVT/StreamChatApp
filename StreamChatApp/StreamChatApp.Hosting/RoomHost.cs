@@ -23,6 +23,7 @@ namespace StreamChatApp.Hosting
         {
             string httpAddr = "http://localhost:" + port.ToString() + "/RoomService";
             string tcpAddr = "net.tcp://localhost:" + (port + 1).ToString() + "/RoomService";
+            //net.tcp://localhost:9898/RoomService
             try
             {
                 Uri httpUri = new Uri(httpAddr);

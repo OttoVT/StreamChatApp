@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <ListBox Grid.Column="1" ItemsSource="{Binding ChatHistory}"  Style="{StaticResource StackPanelInners}" Height="211">
+                <ListBox Grid.Column="1" ItemsSource="{Binding ChatHistory}"  Style="{StaticResource StackPanelInners}" Height="200">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -33,16 +33,19 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <TextBox Name="chatTxtBoxType" Style="{StaticResource StackPanelInners}" Height="39"/>
+                <TextBox Name="chatTxtBoxType" Style="{StaticResource StackPanelInners}" Text="{Binding MessageText}" Height="39"/>
                 <WrapPanel>
-                    <Button x:Name="sendMessageButton" Style="{StaticResource StackPanelInners}" Content="{x:Static resx:Resources.SendFileButton}"/>
+                    <Button x:Name="sendMessageButton" 
+                            Command="{Binding SendMessage}"
+                            Style="{StaticResource StackPanelInners}" 
+                            Content="{x:Static resx:Resources.SendFileButton}"/>
                 </WrapPanel>
             </StackPanel>
 
             <StackPanel Grid.Column="1" >
                 <ListBox Name="chatListBoxUsers" Style="{StaticResource StackPanelInners}" Height="85"/>
                 <Button x:Name="sendFileButton" Style="{StaticResource StackPanelInners}" Content="{x:Static resx:Resources.SendFileButton}"/>
-                <Button x:Name="connectToRoom" Style="{StaticResource StackPanelInners}" Content="Connect"/>
+                <Button x:Name="connectToRoom" Style="{StaticResource StackPanelInners}" Command="{Binding ConnectToRoom}" Content="Connect"/>
             </StackPanel>
         </Grid>
     </Grid>

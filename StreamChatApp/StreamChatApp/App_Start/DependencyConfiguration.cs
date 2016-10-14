@@ -29,17 +29,18 @@ namespace StreamChatApp.App_Start
             ServiceLocator.SetLocatorProvider(() => locator);
             #region RegisterTypes
 
-            #region
+            #region Instances
+            container.RegisterInstance<IUserContext>(new UserContext());
+            container.RegisterInstance<IConfiguration>(new Configuration());
+
             #endregion
 
             #region Communication
             container.RegisterType<IRoomContext, RoomContext>();
             container.RegisterType<IRoomService, RoomService>();
             container.RegisterType<IRoomHost, RoomHost>();
-            container.RegisterType<IUserContext, UserContext>();
             container.RegisterType<ICallBackObserver, CallBackObserver>();
             container.RegisterType<IRoomClient, RoomClient>();
-
 
             #endregion
 
@@ -56,6 +57,7 @@ namespace StreamChatApp.App_Start
             container.RegisterType<HostViewModel>();
 
             #endregion
+
             #endregion
         }
 

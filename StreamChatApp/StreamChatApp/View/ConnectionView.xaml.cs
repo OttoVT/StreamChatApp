@@ -19,9 +19,9 @@ namespace StreamChatApp.View
     /// <summary>
     /// Interaction logic for ChatView.xaml
     /// </summary>
-    public partial class ChatView : UserControl
+    public partial class ConnectionView : Window
     {
-        public ChatView()
+        public ConnectionView()
         {
             InitializeComponent();
         }
