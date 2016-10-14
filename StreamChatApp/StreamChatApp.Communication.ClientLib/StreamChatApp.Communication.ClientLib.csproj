@@ -41,10 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallBackHandler.cs" />
+    <Compile Include="CallBackObserver.cs" />
+    <Compile Include="ICallBackObserver.cs" />
+    <Compile Include="IUserContext.cs" />
     <Compile Include="RoomClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserContext.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StreamChatApp.Communication.BLLInterfaces\StreamChatApp.Communication.BLLInterfaces.csproj">
+      <Project>{c5f405f1-d33f-4e7e-b0ef-5c5c8917454d}</Project>
+      <Name>StreamChatApp.Communication.BLLInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StreamChatApp.Communication.CallBackInterface\StreamChatApp.Communication.CallBackInterface.csproj">
       <Project>{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}</Project>
       <Name>StreamChatApp.Communication.CallBackInterface</Name>

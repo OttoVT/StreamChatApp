@@ -1,5 +1,4 @@
-﻿
-using StreamChatApp.Communication.BLLInterface;
+﻿using StreamChatApp.Communication.BLLInterfaces;
 using StreamChatApp.Communication.CallBackInterface;
 using StreamChatApp.Model.Contracts;
 using System;

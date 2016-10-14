@@ -8,7 +8,7 @@ using StreamChatApp.Model.Contracts;
 using System.ServiceModel;
 using StreamChatApp.Communication.CallBackInterface;
 using StreamChatApp.Communication.BLL.Logic;
-using StreamChatApp.Communication.BLLInterface;
+using StreamChatApp.Communication.BLLInterfaces;
 
 namespace StreamChatApp.Communication.Server
 {

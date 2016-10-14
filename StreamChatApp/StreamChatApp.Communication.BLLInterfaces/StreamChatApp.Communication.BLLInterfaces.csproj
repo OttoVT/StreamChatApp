@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLRequestContext.cs" />
+    <Compile Include="ICallBackEvents.cs" />
+    <Compile Include="IRoomClient.cs" />
     <Compile Include="IRoomContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

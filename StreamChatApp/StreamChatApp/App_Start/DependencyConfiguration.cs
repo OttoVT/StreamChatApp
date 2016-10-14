@@ -1,7 +1,8 @@
 ﻿using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using StreamChatApp.Communication.BLL.Logic;
-using StreamChatApp.Communication.BLLInterface;
+using StreamChatApp.Communication.BLLInterfaces;
+using StreamChatApp.Communication.ClientLib;
 using StreamChatApp.Communication.Server;
 using StreamChatApp.Communication.ServerInterface;
 using StreamChatApp.Hosting;
@@ -35,17 +36,25 @@ namespace StreamChatApp.App_Start
             container.RegisterType<IRoomContext, RoomContext>();
             container.RegisterType<IRoomService, RoomService>();
             container.RegisterType<IRoomHost, RoomHost>();
+            container.RegisterType<IUserContext, UserContext>();
+            container.RegisterType<ICallBackObserver, CallBackObserver>();
+            container.RegisterType<IRoomClient, RoomClient>();
+
+
             #endregion
 
             #region Model
+            container.RegisterType<ChatModel>();
             container.RegisterType<HostModel>();
             container.RegisterType<HostViewModel>();
+
             #endregion
 
             #region ViewModel
             container.RegisterType<MainViewModel>();
             container.RegisterType<ChatViewModel>();
             container.RegisterType<HostViewModel>();
+
             #endregion
             #endregion
         }

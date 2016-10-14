@@ -1,7 +1,7 @@
 ﻿
 using StreamChatApp.Model.Contracts;
 
-namespace StreamChatApp.Communication.BLLInterface
+namespace StreamChatApp.Communication.BLLInterfaces
 {
     public interface IRoomContext
     {

@@ -97,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\ConnectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\HostView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,6 +119,7 @@
     </Compile>
     <Compile Include="App_Start\DependencyConfiguration.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Model\ChatModel.cs" />
     <Compile Include="Model\HostModel.cs" />
     <Compile Include="Utils\IViewModelResolver.cs" />
     <Compile Include="Utils\ViewModelLocator.cs" />
@@ -122,6 +127,9 @@
     <Compile Include="ViewModel\HostViewModel.cs" />
     <Compile Include="ViewModel\ChatViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\ConnectionView.xaml.cs">
+      <DependentUpon>ConnectionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HostView.xaml.cs">
       <DependentUpon>HostView.xaml</DependentUpon>
     </Compile>
@@ -175,6 +183,10 @@
     <ProjectReference Include="..\StreamChatApp.Communication.CallBackInterface\StreamChatApp.Communication.CallBackInterface.csproj">
       <Project>{D51D2CC7-4B58-40AB-86E2-55FC1EAA3656}</Project>
       <Name>StreamChatApp.Communication.CallBackInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreamChatApp.Communication.ClientLib\StreamChatApp.Communication.ClientLib.csproj">
+      <Project>{1CD4A3D1-2F76-4B41-8955-2E22922CF042}</Project>
+      <Name>StreamChatApp.Communication.ClientLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\StreamChatApp.Communication.ServerInterface\StreamChatApp.Communication.ServerInterface.csproj">
       <Project>{CA7FCEFD-0A54-4DE5-8EA0-BEA4113E470D}</Project>
